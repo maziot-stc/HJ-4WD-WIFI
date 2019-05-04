@@ -15,14 +15,11 @@ int main(void)
 
     while(1)
     {
-        Digital = DigCode[0];
-        Segment = SegCode[i];
-        delay_ms(1000);
-
-        i++;
-        if(i > 9)
+        for(i = 0; i < 10; i++)
         {
-            i = 0;
+            Digital = DigCode[0];
+            Segment = SegCode[i];
+            delay_ms(1000);
         }
     }
 }
