@@ -12,6 +12,9 @@ u8 DigCode[4] = {0xfe, 0xfd, 0xfb, 0xf7};                                       
 /* 数码管显示的值 */
 int value[4] = {1, 2, 3, 4};
 
+/* 是否显示小数点(Decimal point) */
+int point[4] = {0, 1, 0, 0};
+
 int main(void)
 {
     int i = 0;
@@ -22,6 +25,12 @@ int main(void)
         {
             Digital = DigCode[i];
             Segment = SegCode[value[i]];
+
+            if(1 == point[i])
+            {
+                Segment = Segment & 0x7f;
+            }
+
             delay_ms(1);
         }
     }
