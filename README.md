@@ -3,4 +3,4 @@
 
 ### 宣传彩页
 
-![宣传彩页](https://github.com/stc-mcu/HJ-4WD-WIFI/blob/master/Image/%E5%AE%A3%E4%BC%A0%E5%BD%A9%E9%A1%B5.jpg?raw=true)
+![开发板实物图](https://github.com/stc-mcu/HJ-4WD-WIFI/blob/master/Image/HJ-4WD-WIFI.jpg?raw=true)
