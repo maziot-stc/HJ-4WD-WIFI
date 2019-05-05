@@ -13,11 +13,14 @@ u8 DigCode[4] = {0xfe, 0xfd, 0xfb, 0xf7};                                       
 /* 数码管显示的值 */
 int value[4] = {0, 0, 0, 0};
 
+/* 数码管显示的位置 */
+int location = 0;
+
 int main(void)
 {
     while(1)
     {
-        Digital = DigCode[0];
+        Digital = DigCode[location];
         Segment = SegCode[value[0]];
         delay_ms(10);
         key_control(key_scan());

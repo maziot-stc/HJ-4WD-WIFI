@@ -2,6 +2,7 @@
 #include "bsp_delay.h"
 
 extern int value[4];
+extern int location;
 
 /**
  * @Description 按键扫描函数(4个按键同时扫描)
@@ -26,12 +27,12 @@ u8 key_scan(void)
             key_value = GPIO_KEY | (~GPIO_KEY_MASK);
 
             /* 这里是松手检测，在20ms内按键没有放开，程序会一直停在此处 */
-            /* 倘若50ms期间，松开了按键，则会跳出此while循环 */
+            /* 倘若200ms期间，松开了按键，则会跳出此while循环 */
             /* 也就是说：按键没有松开的话，程序不会去做其他的事情 */
-            /* 当然也有松手检测的超时时间，就是我们设置的20ms */
+            /* 当然也有松手检测的超时时间，就是我们设置的200ms */
             while((i < 20) && ((GPIO_KEY & GPIO_KEY_MASK) != GPIO_KEY_MASK))
             {
-                delay_ms(1);
+                delay_ms(10);
                 i++;
             }
         }
@@ -51,17 +52,29 @@ void key_control(u8 key_value)
     /* 根据捕捉的键值解析出按下的键，并作出相应的处理 */
     switch(key_value)
     {
-        case(0xef):
-            value[0] = 4;
+        case(0xef):         // K4
+            if(location < 3)
+            {
+                location++;
+            }
             break;
-        case(0xdf):
-            value[0] = 3;
+        case(0xdf):         // K3
+            if(location > 0)
+            {
+                location--;
+            }
             break;
-        case(0xbf):
-            value[0] = 2;
+        case(0xbf):         // K2
+            if(value[0] > 0)
+            {
+                value[0]--;
+            }
             break;
-        case(0x7f):
-            value[0] = 1;
+        case(0x7f):         // K1
+            if(value[0] < 9)
+            {
+                value[0]++;
+            }
             break;
     }
 }
