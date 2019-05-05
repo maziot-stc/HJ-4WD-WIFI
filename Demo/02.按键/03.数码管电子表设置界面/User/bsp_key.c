@@ -65,15 +65,15 @@ void key_control(u8 key_value)
             }
             break;
         case(0xbf):         // K2
-            if(value[0] > 0)
+            if(value[location] > 0)
             {
-                value[0]--;
+                value[location]--;
             }
             break;
         case(0x7f):         // K1
-            if(value[0] < 9)
+            if(value[location] < 9)
             {
-                value[0]++;
+                value[location]++;
             }
             break;
     }

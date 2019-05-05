@@ -18,11 +18,32 @@ int location = 0;
 
 int main(void)
 {
+    int i = 0;
+    int j = 0;
+    int count = 100;
+
     while(1)
     {
-        Digital = DigCode[location];
-        Segment = SegCode[value[0]];
-        delay_ms(10);
-        key_control(key_scan());
+        for(j = 0; j < count; j++)
+        {
+            for(i = 0; i < 4; i++)
+            {
+                Digital = DigCode[i];
+                Segment = SegCode[value[i]];
+                delay_ms(1);
+                key_control(key_scan());
+            }
+        }
+
+        for(j = 0; j < count; j++)
+        {
+            for(i = 0; i < 4; i++)
+            {
+                Digital = (location == i) ? 0xff : DigCode[i];
+                Segment = SegCode[value[i]];
+                delay_ms(1);
+                key_control(key_scan());
+            }
+        }
     }
 }
