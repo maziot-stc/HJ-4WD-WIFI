@@ -15,8 +15,6 @@ int value[4] = {0, 0, 0, 0};
 
 int main(void)
 {
-    u8 data1 = 0;
-
     while(1)
     {
         Digital = DigCode[0];
