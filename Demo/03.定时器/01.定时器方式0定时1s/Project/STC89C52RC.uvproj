@@ -396,6 +396,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\bsp_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp_timer.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
