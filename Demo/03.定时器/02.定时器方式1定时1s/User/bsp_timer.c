@@ -1,7 +1,7 @@
 #include "bsp_timer.h"
 #include "reg52.h"
 
-static interrupt_count = 0;
+static u8 interrupt_count = 0;
 extern void run(void);
 
 /**
