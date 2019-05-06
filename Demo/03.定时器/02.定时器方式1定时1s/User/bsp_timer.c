@@ -42,7 +42,7 @@ void timer_stop(void)
 }
 
 /**
- * @Descroption 定时器0中断服务函数
+ * @Description 定时器0中断服务函数
  */
 void timer0_handler() interrupt 1
 {

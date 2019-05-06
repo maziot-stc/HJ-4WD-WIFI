@@ -32,7 +32,7 @@ int main(void)
 }
 
 /**
- * @Descroption 定时器0中断回调函数
+ * @Description 定时器0中断回调函数
  */
 void run(void)
 {
