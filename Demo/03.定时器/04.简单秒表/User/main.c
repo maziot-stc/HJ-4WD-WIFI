@@ -2,6 +2,7 @@
 #include "main.h"
 #include "bsp_delay.h"
 #include "bsp_timer.h"
+#include "bsp_key.h"
 
 #define Segment P0
 #define Digital P2
@@ -27,6 +28,7 @@ int main(void)
             Digital = DigCode[i];
             Segment = (1 == i) ? (SegCode[value[i]] & 0x7f) : SegCode[value[i]];
             delay_ms(1);
+            key_control(key_scan());
         }
     }
 }
