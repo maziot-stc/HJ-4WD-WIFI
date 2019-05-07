@@ -1,17 +1,27 @@
 #include "reg52.h"
 #include "main.h"
-
-#define Segment P0
-#define Digital P2
-
-/* 数码管段选码、位选码 */
-u8 SegCode[10] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};      // 段选低电平有效
-u8 DigCode[4] = {0xfe, 0xfd, 0xfb, 0xf7};                                           // 位选低电平有效
+#include "bsp_uart.h"
 
 int main(void)
 {
-    Digital = DigCode[0];
-    Segment = SegCode[0];
+    uart_init();
+
+    uart_send_char((u8)'H');
+    uart_send_char((u8)'e');
+    uart_send_char((u8)'l');
+    uart_send_char((u8)'l');
+    uart_send_char((u8)'o');
+
+    uart_send_char((u8)' ');
+
+    uart_send_char((u8)'W');
+    uart_send_char((u8)'o');
+    uart_send_char((u8)'r');
+    uart_send_char((u8)'l');
+    uart_send_char((u8)'d');
+
+    uart_send_char((u8)'\r');
+    uart_send_char((u8)'\n');
 
     while(1);
 }
