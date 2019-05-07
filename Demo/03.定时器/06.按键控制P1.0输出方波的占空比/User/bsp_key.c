@@ -77,7 +77,7 @@ void key_control(u8 key_value)
                 pwm_pin = 0;
             }
 
-            value[2] = pwm_value / 10;
+            value[2] = pwm_value / 10 % 10;
             value[3] = pwm_value % 10;
             break;
         case(0x7f):         // K1
@@ -97,7 +97,7 @@ void key_control(u8 key_value)
                 pwm_pin = 1;
             }
 
-            value[2] = pwm_value / 10;
+            value[2] = pwm_value / 10 % 10;
             value[3] = pwm_value % 10;
             break;
     }

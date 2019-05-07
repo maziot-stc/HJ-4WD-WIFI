@@ -12,7 +12,7 @@ u8 SegCode[10] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};  
 u8 DigCode[4] = {0xfe, 0xfd, 0xfb, 0xf7};                                           // 位选低电平有效
 
 /* 数码管显示的值 */
-int value[4] = {0, 0, 5, 0};
+int value[4] = {0, 1, 5, 0};
 
 /* PWM 输出的 GPIO 引脚 */
 sbit pwm_pin = P1^0;
@@ -33,8 +33,15 @@ int main(void)
         for(i = 0; i < 4; i++)
         {
             Digital = DigCode[i];
-            Segment = (i < 2) ? 0xff: SegCode[value[i]];
-            delay_ms(1);
+            if(pwm_value < 100)
+            {
+                Segment = (i < 2) ? 0xff: SegCode[value[i]];
+            }
+            else if(100 == pwm_value)
+            {
+                Segment = (i < 1) ? 0xff: SegCode[value[i]];
+            }
+            delay_ms(3);
             key_control(key_scan());
         }
     }
