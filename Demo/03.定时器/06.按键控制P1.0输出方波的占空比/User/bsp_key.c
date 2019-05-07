@@ -1,8 +1,10 @@
 #include "bsp_key.h"
 #include "bsp_delay.h"
+#include "bsp_timer.h"
 
 extern int value[4];
 extern int pwm_value;
+sbit pwm_pin = P1^0;
 
 /**
  * @Description 按键扫描函数(4个按键同时扫描)
@@ -59,20 +61,42 @@ void key_control(u8 key_value)
         case(0xdf):         // K3
             break;
         case(0xbf):         // K2
+            if(100 == pwm_value)
+            {
+                timer_start();
+            }
+
             if(pwm_value > 0)
             {
-                // pwm_value--;
                 pwm_value = pwm_value - 5;
             }
+
+            if(0 == pwm_value)
+            {
+                timer_stop();
+                pwm_pin = 0;
+            }
+
             value[2] = pwm_value / 10;
             value[3] = pwm_value % 10;
             break;
         case(0x7f):         // K1
+            if(0 == pwm_value)
+            {
+                timer_start();
+            }
+
             if(pwm_value < 100)
             {
-                // pwm_value++;
                 pwm_value = pwm_value + 5;
             }
+
+            if(100 == pwm_value)
+            {
+                timer_stop();
+                pwm_pin = 1;
+            }
+
             value[2] = pwm_value / 10;
             value[3] = pwm_value % 10;
             break;
