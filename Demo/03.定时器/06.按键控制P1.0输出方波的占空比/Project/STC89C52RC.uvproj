@@ -401,6 +401,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\bsp_timer.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp_key.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

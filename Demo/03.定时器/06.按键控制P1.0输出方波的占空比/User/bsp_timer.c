@@ -3,6 +3,7 @@
 
 static u8 interrupt_count = 0;
 extern void run(void);
+extern int pwm_value;
 
 /**
  * @Description 定时器0简单初始化函数
@@ -24,8 +25,8 @@ void timer_init(void)
     /* 因此计数 10000 次耗时: 1000ms / 921600 * 10000 = 10.85ms */
     /* 计数 7500 次耗时: 1000ms / 921600 * 7500 = 8.14ms */
     /* 计数 2500 次耗时: 1000ms / 921600 * 2500 = 2.71ms */
-    TH0 = 0xf6;
-    TL0 = 0x3c;
+    TH0 = (65536 - (100 - pwm_value) * 100) >> 8;
+    TL0 = (65536 - (100 - pwm_value) * 100);
 
     /* 使能总中断和定时器0中断 */
     IE = 0x82;
@@ -59,13 +60,13 @@ void timer0_handler() interrupt 1
     /* 手动的装载初值 */
     if(1 == interrupt_count)
     {
-        TH0 = 0xe2;
-        TL0 = 0xb4;
+        TH0 = (65536 - pwm_value * 100) >> 8;
+        TL0 = (65536 - pwm_value * 100);
     }
     else if(interrupt_count >= 2)
     {
-        TH0 = 0xf6;
-        TL0 = 0x3c;
+        TH0 = (65536 - (100 - pwm_value) * 100) >> 8;
+        TL0 = (65536 - (100 - pwm_value) * 100);
         interrupt_count = 0;
     }
 
