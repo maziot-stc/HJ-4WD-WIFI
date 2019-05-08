@@ -391,6 +391,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\main.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_lcd1602.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp_lcd1602.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp_delay.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
