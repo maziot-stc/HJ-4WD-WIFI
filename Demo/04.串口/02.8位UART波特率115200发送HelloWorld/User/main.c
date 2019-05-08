@@ -5,7 +5,7 @@
 int main(void)
 {
     uart_init();
-    uart_send_string("Hello World\r\n");
+    uart_send_string("Hello World 115200\r\n");
 
     while(1);
 }
