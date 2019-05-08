@@ -18,7 +18,7 @@ void uart_init(void)
     /* PCON[6]   = 0b  不启用帧错误检测 */
     PCON = 0x00;
 
-    /* SCON[7:6] = 10b UART工作在方式1，波特率可变 */
+    /* SCON[7:6] = 01b UART工作在方式1，波特率可变 */
     /* SCON[5]   = 0b  不允许多主机通信 */
     /* SCON[1]   = 0b  清除发送完成标志 */
     SCON = 0x40;
