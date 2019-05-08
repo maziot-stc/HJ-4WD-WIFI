@@ -48,13 +48,11 @@ void uart_send_char(u8 ch)
 }
 
 /**
- * @Description 串口发送字符串
+ * @Description 实现 printf 底层 putchar 函数
+ * @note 实现此函数后，便可以直接使用 printf 函数，需要包含 stdio.h
  */
-void uart_send_string(u8 *str)
+char putchar(char c)
 {
-    while((u8)*str != (u8)'\0')
-    {
-        uart_send_char((u8)*str);
-        str++;
-    }
+    uart_send_char(c);
+    return c;
 }
