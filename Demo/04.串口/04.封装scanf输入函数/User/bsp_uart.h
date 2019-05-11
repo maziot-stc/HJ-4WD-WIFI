@@ -6,5 +6,6 @@
 
 void uart_init(void);
 void uart_send_char(u8 ch);
+u8 uart_receive_char(void);
 
 #endif /* __BSP_UART_H */

@@ -21,7 +21,8 @@ void uart_init(void)
     /* SCON[7:6] = 01b UART工作在方式1，波特率可变 */
     /* SCON[5]   = 0b  不允许多主机通信 */
     /* SCON[1]   = 0b  清除发送完成标志 */
-    SCON = 0x40;
+    /* SCON[4]   = 1b  使能接收 */
+    SCON = 0x50;
 
     /* 备注: 上述 SCON 和 PCON 单路列举出来的寄存器必须配置上述值 */
     /* 备注: 波特率计算方法 */
@@ -48,6 +49,21 @@ void uart_send_char(u8 ch)
 }
 
 /**
+ * @Description 串口发送单个字符
+ */
+u8 uart_receive_char(void)
+{
+    /* 等待串口接收到数据 */
+    while (RI == 0);
+
+    /* 清除接收标志 */
+    RI = 0;
+
+    /* 返回接收到的字符 */
+    return SBUF;
+}
+
+/**
  * @Description 实现 printf 底层 putchar 函数
  * @note 实现此函数后，便可以直接使用 printf 函数，需要包含 stdio.h
  */
@@ -55,4 +71,13 @@ char putchar(char c)
 {
     uart_send_char(c);
     return c;
+}
+
+/**
+ * @Description 实现 scanf 底层 _getkey 函数
+ * @note 实现此函数后，便可以直接使用 scanf 函数，需要包含 stdio.h
+ */
+char _getkey(void)
+{
+    return uart_receive_char();
 }

@@ -3,12 +3,14 @@
 #include "bsp_uart.h"
 #include "stdio.h"
 
+char str[64];
+
 int main(void)
 {
     uart_init();
-
-    // 使用C51的printf()函数打印%d/i/u/o/x/X格式时，必须要指定该变量的存储格式l/L/b/B
-    printf("%c %d %s %bx Hello World!\r\n", 'H', 1000, "demo", 0x55);
-
-    while(1);
+    while(1)
+    {
+        scanf("%s", str);
+        printf("rec: %s\r\n", str);
+    }
 }
