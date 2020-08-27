@@ -1,7 +1,7 @@
 
 ### 开发板实物图
 
-![开发板实物图](https://github.com/stc-mcu/HJ-4WD-WIFI/blob/master/Image/HJ-4WD-WIFI.jpg?raw=true)
+![开发板实物图](./Image/HJ-4WD-WIFI.jpg)
 
 ### 开发工具
 
