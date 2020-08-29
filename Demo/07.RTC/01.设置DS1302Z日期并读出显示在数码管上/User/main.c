@@ -40,6 +40,11 @@ int main(void)
     datetime.minute = 33;
     datetime.second = 00;
     ds1302_set_datetime(&datetime);
+    
+    datetime.month = 1;
+    datetime.day = 23;
+    
+    ds1302_get_datetime(&datetime);
 
     value[0] = datetime.month / 10;
     value[1] = datetime.month % 10;
